@@ -1,6 +1,5 @@
 class DashboardController < ApplicationController
   def show
-    binding.pry
     conn = Faraday.new(url: "https://api.nytimes.com") do |faraday|
       faraday.headers["api-key"] = ENV["nyt-api-key"]
       faraday.adapter Faraday.default_adapter

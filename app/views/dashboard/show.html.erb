@@ -2,6 +2,13 @@
 
 
 <% @stories.each do |story| %>
-  <h3><%= story.headline %><h3>
+  <h3><%= story.headline %></h3>
+  <%= image_tag(story.thumbnail)  if story.thumbnail %></br>
+  URL: <%= link_to(story.url) %></br>
+  <%= story.byline %></br>
+  <%= story.abstract %></br>
+  Keywords: <%= story.keywords.to_s %>
+
+
 <% end %>
 
