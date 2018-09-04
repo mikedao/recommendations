@@ -13,5 +13,13 @@ class Story
     @abstract   = data[:abstract]
     @thumbnail  = data[:multimedia][1][:url]
     @keywords   = data[:des_facet]
+    generate_books
   end
+
+
+  def generate_books
+    @keywords.each do |keyword|
+    end
+  end
+
 end
