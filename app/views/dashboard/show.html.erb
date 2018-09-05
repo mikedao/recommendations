@@ -8,6 +8,11 @@
   <%= story.byline %></br>
   <%= story.abstract %></br>
   Keywords: <%= story.keywords.to_s %>
+  <% story.books.each do |book| %>
+    <%= book.title %>
+    <%= image_tag(book.thumbnail) if book.thumbnail %>
+    <%= link_to("Buy Now", book.buy_link)%>
+  <% end %>
 
 
 <% end %>
