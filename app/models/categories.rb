@@ -7,6 +7,7 @@ class Categories
       "Rumors and Misinformation" => "American+Journalism",
       "Twenty-Fifth Amendment (US Constitution)" => "25th+Amendment",
       "Constitution (US)" => "United+States+Constitution",
+      "California Today" => "California",
 
 
 
