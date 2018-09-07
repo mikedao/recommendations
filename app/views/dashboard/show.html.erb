@@ -1,19 +1,21 @@
-<h2>Recommendations</h2>
+<h1>Recommendations</h1>
 
 
 <% @stories.each do |story| %>
-  <h3><%= story.headline %></h3>
+  <h2><%= story.headline %></h2>
   <%= image_tag(story.thumbnail)  if story.thumbnail %></br>
   URL: <%= link_to(story.url) %></br>
   <%= story.byline %></br>
   <%= story.abstract %></br>
-  Keywords: <%= story.keywords.to_s %>
+  <%= story.keywords.to_s %></br>
+  <h3>Learn More About This Topic:</h3>
   <% story.books.each do |book| %>
-    <%= book.title %>
-    <%= image_tag(book.thumbnail) if book.thumbnail %>
-    <%= link_to("Buy Now", book.buy_link)%>
+    <p>
+    <%= image_tag(book.thumbnail) if book.thumbnail %></br>
+    <%= book.title %> - <%= link_to("Buy Now", book.buy_link) %></br>
+    </p>
   <% end %>
-
+  <hr>
 
 <% end %>
 

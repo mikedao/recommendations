@@ -27,11 +27,15 @@ class Story
 
   def get_books(keyword)
     keyword = format_keyword(keyword)
-    response = Faraday.get("https://www.googleapis.com/books/v1/volumes?q=#{keyword}&maxResults=5&orderBy=relevance")
+    response = Faraday.get("https://www.googleapis.com/books/v1/volumes?q=#{keyword}&maxResults=5&orderBy=relevance&key=#{ENV["google-books-api-key"]}")
     JSON.parse(response.body, symbolize_names: true)[:items]
   end
 
   def format_keyword(keyword)
-    keyword.gsub(" ","+")
+    if Categories::DICTIONARY.key?(keyword)
+      Categories::DICTIONARY[keyword]
+    else
+      keyword.gsub(" ","+")
+    end
   end
 end

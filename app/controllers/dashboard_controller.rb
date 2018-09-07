@@ -6,11 +6,11 @@ class DashboardController < ApplicationController
     end
 
     response = conn.get("/svc/topstories/v2/home.json")
-    raw_stories = JSON.parse(response.body, symbolize_names: true)[:results][0..4]
-    @stories = raw_stories.map do |raw_story|
-      Story.new(raw_story)
+    raw_stories = JSON.parse(response.body, symbolize_names: true)[:results]
+    @stories = []
+    raw_stories.each do |raw_story|
+      @stories << Story.new(raw_story) unless raw_story[:des_facet].empty?
+      return @stories if @stories.count > 4
     end
-
   end
-
 end
